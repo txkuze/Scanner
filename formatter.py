@@ -159,62 +159,150 @@ class TelegramFormatter:
 
     @staticmethod
     def format_help() -> str:
-        return """
-🤖 <b>VULNERABILITY SCANNER BOT</b>
+        return """<blockquote expandable>🤖 <b>ADVANCED AI BOT - HELP MENU</b>
 
-<b>Available Commands:</b>
+━━━━━━━━━━━━━━━━━━━━━━
 
-/start - Start the bot and see welcome message
-/help - Show this help message
-/vulnerscan &lt;website&gt; - Scan a website for vulnerabilities
+📋 <b>AVAILABLE COMMANDS:</b>
 
-<b>Example Usage:</b>
-<code>/vulnerscan example.com</code>
-<code>/vulnerscan https://example.com</code>
+🚀 <b>General Commands:</b>
+  /start - 🏁 Start the bot and see welcome message
+  /help - 📖 Show this comprehensive help menu
+  /chat - 💬 Chat with Gemini AI assistant
+  /history - 📊 View your username/name history (Sangmata)
+  /clear - 🗑️ Clear your chat history with AI
 
-<b>Features:</b>
-✅ Port scanning and service detection
-✅ HTTP security header analysis
-✅ SSL/TLS configuration check
-✅ Vulnerability identification
-✅ Risk scoring and severity assessment
-✅ Detailed PDF report generation
+🔐 <b>Sudo Commands (Authorized Users Only):</b>
+  /vulnerscan &lt;website&gt; - 🔍 Scan a website for vulnerabilities
 
-⚠️ <b>IMPORTANT LEGAL NOTICE:</b>
-This bot is for educational and defensive security purposes only. Only scan websites you own or have explicit written authorization to test. Unauthorized scanning may be illegal in your jurisdiction.
+👑 <b>Owner Commands:</b>
+  /addsudo &lt;user&gt; - ➕ Add a user to sudo list
+  /delsudo &lt;user&gt; - ➖ Remove a user from sudo list
+  /sudolist - 👥 View all sudo users
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 <b>FEATURES:</b>
+
+🤖 <b>AI Chatbot:</b>
+  ✨ Powered by Google Gemini AI
+  💭 Natural conversation capabilities
+  🧠 Context-aware responses
+  📚 Knowledge about cybersecurity & tech
+
+🔍 <b>Vulnerability Scanning:</b>
+  ✅ Port scanning and service detection
+  ✅ HTTP security header analysis
+  ✅ SSL/TLS configuration check
+  ✅ Cookie security assessment
+  ✅ Vulnerability identification
+  ✅ Risk scoring and severity assessment
+  ✅ Professional PDF report generation
+
+📊 <b>Sangmata Feature:</b>
+  ✅ Track username changes
+  ✅ Monitor name changes
+  ✅ Complete user history log
+  ✅ Automatic change detection
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+📝 <b>EXAMPLE USAGE:</b>
+
+💬 Chat with AI:
+  <code>/chat Hello! How are you?</code>
+  <code>/chat Explain SQL injection</code>
+
+🔍 Scan a website (Sudo only):
+  <code>/vulnerscan example.com</code>
+  <code>/vulnerscan https://example.com</code>
+
+👑 Manage sudo users (Owner only):
+  <code>/addsudo @username</code>
+  <code>/addsudo 123456789</code>
+  <code>/delsudo @username</code>
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ <b>IMPORTANT NOTICE:</b>
+This bot is for educational and security awareness purposes. Vulnerability scanning requires sudo access and should only be performed on systems you own or have authorization to test.
 
 🛡️ <b>Security Best Practices:</b>
-• Always obtain written permission before scanning
-• Use for defensive security and awareness
-• Never use findings for malicious purposes
-• Report vulnerabilities responsibly
+  • Always obtain written permission before scanning
+  • Use for defensive security and awareness
+  • Never use findings for malicious purposes
+  • Report vulnerabilities responsibly
 
-📧 Questions? Contact your security administrator.
-        """
+━━━━━━━━━━━━━━━━━━━━━━
+
+💡 <b>Need Support?</b>
+Contact the bot administrator for assistance!
+
+🌟 Enjoy using the bot!</blockquote>"""
 
     @staticmethod
     def format_start() -> str:
-        return """
-👋 <b>Welcome to Vulnerability Scanner Bot!</b>
+        return """<blockquote expandable>👋 <b>WELCOME TO ADVANCED AI BOT!</b>
 
-I'm a defensive security tool designed to help you assess website security posture through authorized vulnerability scanning.
+━━━━━━━━━━━━━━━━━━━━━━
 
-<b>What I Can Do:</b>
-🔍 Comprehensive port and service scanning
-🛡️ Security header analysis
-🔒 SSL/TLS configuration assessment
-📊 Risk scoring and vulnerability reporting
-📄 Professional PDF report generation
+🤖 <b>I'm your advanced AI assistant with multiple powerful capabilities!</b>
 
-<b>Quick Start:</b>
-Use /vulnerscan &lt;website&gt; to scan a website
-Example: <code>/vulnerscan example.com</code>
+━━━━━━━━━━━━━━━━━━━━━━
 
-<b>Need Help?</b>
-Type /help for detailed information
+✨ <b>WHAT I CAN DO:</b>
 
-⚠️ <b>CRITICAL REMINDER:</b>
-Only scan systems you own or have explicit authorization to test. This tool is for educational and defensive security purposes only.
+💬 <b>AI Chatbot (Gemini Powered):</b>
+  🧠 Intelligent conversations
+  📚 Knowledge assistance
+  💡 Problem solving
+  🎯 Context-aware responses
 
-Let's enhance your security awareness! 🚀
-        """
+🔍 <b>Vulnerability Scanning:</b>
+  🌐 Comprehensive port scanning
+  🛡️ Security header analysis
+  🔒 SSL/TLS assessment
+  🍪 Cookie security check
+  📊 Risk scoring & reporting
+  📄 Professional PDF reports
+
+📊 <b>Sangmata Feature:</b>
+  👤 Track username changes
+  📝 Monitor name updates
+  🕐 Complete history log
+  🔍 Automatic detection
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 <b>QUICK START GUIDE:</b>
+
+💬 <b>Chat with me:</b>
+  Just type /chat followed by your message!
+  Example: <code>/chat Hello, how can you help me?</code>
+
+📊 <b>Check your history:</b>
+  Use <code>/history</code> to see your Sangmata data!
+
+🔍 <b>Scan websites (Sudo users):</b>
+  Use <code>/vulnerscan example.com</code>
+
+📖 <b>Need more help?</b>
+  Type <code>/help</code> for detailed command list!
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ <b>IMPORTANT REMINDER:</b>
+
+🔐 Vulnerability scanning requires sudo access
+📝 Only scan systems you own or have authorization
+🛡️ This tool is for educational purposes only
+✅ Always follow ethical hacking guidelines
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+🌟 <b>Let's get started!</b>
+
+💬 Try chatting with me or explore the features!
+📖 Use /help anytime for guidance!
+
+🚀 <i>Powered by Google Gemini AI & Advanced Security Tools</i></blockquote>"""
