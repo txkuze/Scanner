@@ -8,7 +8,8 @@ class Config:
     API_ID = os.getenv('API_ID')
     API_HASH = os.getenv('API_HASH')
 
-    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+    DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
+    DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 
     MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/')
     MONGODB_NAME = os.getenv('MONGODB_NAME', 'telegram_bot')
@@ -30,8 +31,8 @@ class Config:
             raise ValueError("API_ID is required in .env file")
         if not cls.API_HASH:
             raise ValueError("API_HASH is required in .env file")
-        if not cls.GEMINI_API_KEY:
-            raise ValueError("GEMINI_API_KEY is required in .env file")
+        if not cls.DEEPSEEK_API_KEY:
+            raise ValueError("DEEPSEEK_API_KEY is required in .env file")
         if not cls.MONGODB_URI:
             raise ValueError("MONGODB_URI is required in .env file")
         if not cls.OWNER_ID:
