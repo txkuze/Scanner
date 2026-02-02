@@ -1,10 +1,10 @@
-from database import DatabaseManager
+from mongodb_database import MongoDatabase
 from config import Config
 from typing import Optional
 
 class SudoManager:
     def __init__(self):
-        self.db = DatabaseManager()
+        self.db = MongoDatabase()
 
     def initialize_owner(self) -> bool:
         if Config.OWNER_ID and not self.db.is_sudo_user(Config.OWNER_ID):

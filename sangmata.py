@@ -1,10 +1,10 @@
-from database import DatabaseManager
+from mongodb_database import MongoDatabase
 from typing import List, Dict, Any
 from datetime import datetime
 
 class SangmataFeature:
     def __init__(self):
-        self.db = DatabaseManager()
+        self.db = MongoDatabase()
 
     def track_user(self, user_id: int, username: str, first_name: str, last_name: str) -> None:
         self.db.record_user_history(user_id, username, first_name, last_name)

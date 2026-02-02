@@ -1,13 +1,13 @@
 import google.generativeai as genai
 from config import Config
-from database import DatabaseManager
+from mongodb_database import MongoDatabase
 from typing import List, Dict
 
 class GeminiAI:
     def __init__(self):
         genai.configure(api_key=Config.GEMINI_API_KEY)
         self.model = genai.GenerativeModel('gemini-pro')
-        self.db = DatabaseManager()
+        self.db = MongoDatabase()
 
         self.system_prompt = """You are an advanced AI assistant integrated into a Telegram bot with multiple capabilities:
 
