@@ -251,7 +251,7 @@ async def vulnerscan_command(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
         await update.message.reply_document(
             document=open(pdf_path, 'rb'),
-            caption=formatted_message,
+            caption="📄 Full vulnerability report (see document)",
             parse_mode=ParseMode.HTML,
             filename=f"security_report_{scan_results['host']}.pdf"
         )
