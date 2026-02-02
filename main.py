@@ -230,7 +230,7 @@ async def vulnerscan_command(update: Update, context: ContextTypes.DEFAULT_TYPE)
     active_scans[user_id] = True
 
     status_message = await update.message.reply_text(
-        f"<b>Scanning:</b> {target}\n\nThis may take 1-3 minutes...",
+        f"<b>⚕️ Scanning the web :</b> {target}\n\nThis may take 1-3 minutes let me generate scanned reports,since i am not that featurepacked so i can give you minimal vulnerabilities...",
         parse_mode=ParseMode.HTML
     )
 
