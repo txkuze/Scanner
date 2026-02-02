@@ -1,50 +1,74 @@
-import google.generativeai as genai
+from openai import OpenAI
 from config import Config
 from mongodb_database import MongoDatabase
 from typing import List, Dict
 
-class GeminiAI:
+
+class DeepSeekAI:
     def __init__(self):
-        genai.configure(api_key=Config.GEMINI_API_KEY)
-        self.model = genai.GenerativeModel('gemini-pro')
+        self.client = OpenAI(
+            api_key=Config.DEEPSEEK_API_KEY,
+            base_url=Config.DEEPSEEK_BASE_URL
+        )
+
+        self.model = "deepseek-chat"
         self.db = MongoDatabase()
 
-        self.system_prompt = """You are an advanced AI assistant integrated into a Telegram bot with multiple capabilities:
-
-1. You can have natural conversations with users
-2. You can help with vulnerability scanning (though that requires special permissions)
-3. You provide helpful, friendly, and informative responses
-4. You use emojis appropriately to make conversations engaging
-5. You're knowledgeable about cybersecurity, programming, and technology
-
-Always be helpful, respectful, and provide accurate information. When users ask about scanning websites, remind them that only authorized sudo users can perform scans, and they should only scan websites they own or have permission to test.
-
-Respond in a friendly, conversational manner while being informative and helpful."""
+        self.system_prompt = (
+            "You are an advanced AI assistant integrated into a Telegram bot with multiple capabilities:\n\n"
+            "1. You can have natural conversations with users\n"
+            "2. You can help with vulnerability scanning (only conceptually unless user is authorized)\n"
+            "3. You provide helpful, friendly, and informative responses\n"
+            "4. You use emojis appropriately to make conversations engaging\n"
+            "5. You're knowledgeable about cybersecurity, programming, and technology\n\n"
+            "Rules:\n"
+            "- Be polite, friendly, and accurate\n"
+            "- Never encourage illegal hacking\n"
+            "- When users ask about scanning websites, remind them that only authorized sudo users can perform scans\n"
+            "- Scans should only be done on websites they own or have permission to test\n\n"
+            "Respond in a friendly, conversational tone."
+        )
 
     def get_response(self, user_id: int, user_message: str) -> str:
         try:
             chat_history = self.db.get_chat_history(user_id, limit=10)
 
-            history_context = ""
+            messages = [
+                {"role": "system", "content": self.system_prompt}
+            ]
+
             if chat_history:
                 for msg in chat_history:
-                    role = "User" if msg['role'] == 'user' else "Assistant"
-                    history_context += f"{role}: {msg['message']}\n"
+                    messages.append({
+                        "role": msg["role"],
+                        "content": msg["message"]
+                    })
 
-            full_prompt = f"{self.system_prompt}\n\nConversation History:\n{history_context}\n\nUser: {user_message}\n\nAssistant:"
+            messages.append({
+                "role": "user",
+                "content": user_message
+            })
 
-            response = self.model.generate_content(full_prompt)
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=0.7,
+                max_tokens=1024
+            )
 
-            assistant_reply = response.text
+            assistant_reply = response.choices[0].message.content.strip()
 
-            self.db.add_chat_message(user_id, user_message, 'user')
-            self.db.add_chat_message(user_id, assistant_reply, 'assistant')
+            self.db.add_chat_message(user_id, user_message, "user")
+            self.db.add_chat_message(user_id, assistant_reply, "assistant")
 
             return assistant_reply
 
         except Exception as e:
-            print(f"Gemini AI error: {e}")
-            return "I apologize, but I encountered an error processing your message. Please try again."
+            print(f"DeepSeek AI error: {e}")
+            return (
+                "⚠️ Oops! I ran into a technical issue while processing your message.\n"
+                "Please try again in a moment."
+            )
 
     def clear_conversation(self, user_id: int) -> bool:
         return self.db.clear_chat_history(user_id)
